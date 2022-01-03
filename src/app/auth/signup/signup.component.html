@@ -1,0 +1,46 @@
+<div class="container">
+    <!-- <mat-spinner></mat-spinner> -->
+    <mat-card>
+        <form class="example-form" [formGroup]="signup" (ngSubmit)="onSignup()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Email Address</mat-label>
+                <input matInput id="12" name="email" type="text" formControlName="signEmail" />
+                <mat-error>Please Enter a valid Email address</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput name="pwd" type="password" formControlName="signPwd" />
+                <mat-error *ngIf="signup.touched || signup.dirty">
+                    <p *ngIf="signup.get('signPwd').errors?.required">
+                        Please enter your password
+                    </p>
+                    <p *ngIf="signup.get('signPwd').errors?.minlength">
+                        Password should be minimum 8 characters long
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Re-Enter Password</mat-label>
+                <p [innerHtml]="signup.errors?.matchError"></p>
+                <input matInput name="cnfPwd" type="password" formControlName="signCnfPwd" />
+                <mat-error *ngIf="
+            signup.errors || (signup.get('signCnfPwd').errors && signup.touched)
+          ">
+                    <p *ngIf="signup.get('signCnfPwd').errors?.required">
+                        Please enter your password again
+                    </p>
+                    <p *ngIf="signup.get('signCnfPwd').errors?.minlength">
+                        Password should be minimum 8 characters long
+                    </p>
+                    <p *ngIf="signup.errors?.matchError">
+                        Confirm Password Does not match
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <div class="save_btn">
+                <button mat-raised-button color="primary">Sign UP</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

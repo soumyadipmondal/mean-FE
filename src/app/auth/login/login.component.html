@@ -1,0 +1,25 @@
+<div class="container">
+    <!-- <mat-spinner></mat-spinner> -->
+    <mat-card>
+        <form class="example-form" *ngIf="login" [formGroup]="login" (ngSubmit)="onLogin()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="e.g. john.doe@domain.com" value="" name="email" type="email" formControlName="email" />
+                <mat-error>Please Enter a valid Email address</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput name="password" type="password" formControlName="pwd" />
+                <mat-error>Please Enter a valid Comment</mat-error>
+            </mat-form-field>
+            <div class="save_btn">
+                <button mat-raised-button color="primary">Login</button>
+            </div>
+            <div>
+                <a [routerLink]="['/auth/signup']" rel="noopener noreferrer">Create an Account</a
+        >
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <mat-card *ngIf="!isLoading">
+    <form class="example-form" #formVal="ngForm" (ngSubmit)="onSubmit(formVal)">
+      <mat-form-field class="example-full-width">
+        <mat-label>Post Title</mat-label>
+        <input
+          matInput
+          placeholder="e.g. My New book"
+          value=""
+          name="title"
+          [ngModel]="post?.title"
+          required
+          minlength="3"
+          #title="ngModel"
+        />
+        <mat-error *ngIf="title.invalid">Please Enter a valid title</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. It makes me feel..."
+          name="comment"
+          [ngModel]="post?.content"
+          required
+          minlength="10"
+          #comment="ngModel"
+        ></textarea>
+        <mat-error *ngIf="comment.invalid"
+          >Please Enter a valid Comment</mat-error
+        >
+      </mat-form-field>
+      <div class="save_btn">
+        <button mat-raised-button color="primary">Save Post</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

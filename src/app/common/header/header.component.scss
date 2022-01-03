@@ -1,0 +1,16 @@
+a {
+    text-decoration: none;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-nav-list {
+    display: flex;
+    button {
+        border: none;
+        background-color: transparent;
+        font-weight: 700;
+    }
+}
